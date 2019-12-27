@@ -5,11 +5,11 @@
 //
 
 export const hey = (message) => {
-  let trimed = message.trim()
+  let message = message.trim()
   let sayingOnlyNumbers = (/[a-z]/i.exec(message) === null)
   let shouting = (message === message.toUpperCase() && !sayingOnlyNumbers)
-  let asking = (trimed[trimed.length-1] === "?")
-  let isSilent = (trimed === '')
+  let asking = (message[message.length-1] === "?")
+  let isSilent = (message === '')
 
   if (shouting && asking){
     return 'Calm down, I know what I\'m doing!'

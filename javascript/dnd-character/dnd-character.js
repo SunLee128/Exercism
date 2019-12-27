@@ -3,40 +3,34 @@
 // convenience to get you started writing code faster.
 //
 
-export const abilityModifier = () => {
-  throw new Error("Remove this statement and implement this function");
+export const abilityModifier = (number) => {
+  if(number < 3){
+    throw new Error('Ability scores must be at least 3');
+  }
+  if(number > 18){
+    throw new Error('Ability scores can be at most 18');
+  }
+  return Math.floor((Math.abs(number) - 10)/2) ;
 };
 
 export class Character {
-  static rollAbility() {
-    throw new Error("Remove this statement and implement this function");
+  constructor() {
+    this.strength = Character.rollAbility();
+    this.dexterity = Character.rollAbility();
+    this.constitution = Character.rollAbility();
+    this.intelligence = Character.rollAbility();
+    this.wisdom = Character.rollAbility();
+    this.charisma = Character.rollAbility();
+    this.hitpoints = 10 + abilityModifier(this.constitution);
   }
 
-  get strength() {
-    throw new Error("Remove this statement and implement this function");
-  }
+  static rollAbility() {;
+     const rollD6 = () => {
+      return Math.floor(Math.random() * 6) + 1
+    }
 
-  get dexterity() {
-    throw new Error("Remove this statement and implement this function");
-  }
-
-  get constitution() {
-    throw new Error("Remove this statement and implement this function");
-  }
-
-  get intelligence() {
-    throw new Error("Remove this statement and implement this function");
-  }
-
-  get wisdom() {
-    throw new Error("Remove this statement and implement this function");
-  }
-
-  get charisma() {
-    throw new Error("Remove this statement and implement this function");
-  }
-
-  get hitpoints() {
-    throw new Error("Remove this statement and implement this function");
+    const rolls = [rollD6(), rollD6(), rollD6(), rollD6()].sort()
+    this.random =  rolls[1] + rolls[2] + rolls[3];
+    return this.random;
   }
 }
